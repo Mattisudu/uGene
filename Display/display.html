@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="./bootstrap2/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="./bootstrap2/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <script src="./js/plotly-latest.min.js"></script>
+    <script src="./js/dataframe.min.js"></script>
+    <script type="text/javascript" src="js/color-scale.js"></script>
+    <script type="text/javascript" src="js/ord-map.js"></script>
+
+    <script src="./js/log-runtime.js"></script>
+    <script src="./js/plotting.js"></script>
+    <script src="./js/main.js"></script>
+
+
+</head>
+<body onload="main()">
+<div class="container">
+
+    <div class="container text-center">
+        <div class="row">
+            <H1 class="h1">Results Display</H1>
+        </div>
+    </div>
+
+    <div id= "plott_1_container" class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div class="btn-group">
+                    <button class="_dd_main_ btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">Loading Main</button>
+                    <ul class="_dd_main_ul_ dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_1', 'geneID','gene2d_x', 'gene2d_y')">geneID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_1', 'ncbiID', 'tax2d_x', 'tax2d_y')">ncbiID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_1', 'geneID','presents2d_x', 'presents2d_y')">geneID Pres/Absense</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_1', 'geneID','geneF2d_x', 'geneF2d_y')">geneID FAS_F</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_1', 'geneID','geneB2d_x', 'geneB2d_y')">geneID FAS_B</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class=" btn-group">
+                    <button class="_dd_color_ btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">Loading Color</button>
+                    <ul class="_dd_color_ul_ dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','geneID')">geneID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','ncbiID')">ncbiID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','superkingdom')">superkingdom</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','fullName')">fullname</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','supertaxon')">supertaxon</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','temp')">temp</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','protID')">protID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','subunit')">subunit</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_1','geneKeywords')">geneKeywords</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="plott_1" class="_plott_ img-fluid"></div>
+        </div>
+        <div class="_progress_ hidden">
+            <div class="_progress_bar_ progress-bar" role="progressbar" aria-label="Example with label" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
+    <div id= "plott_2_container" class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div class=" btn-group">
+                    <button class="_dd_main_ btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">Loading Main</button>
+                    <ul class="_dd_main_ul_ dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_2', 'geneID','gene2d_x', 'gene2d_y')">geneID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_2', 'ncbiID', 'tax2d_x', 'tax2d_y')">ncbiID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_2', 'geneID','presents2d_x', 'presents2d_y')">geneID Pres/Absense</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_2', 'geneID','geneF2d_x', 'geneF2d_y')">geneID FAS_F</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateMain('plott_2', 'geneID','geneB2d_x', 'geneB2d_y')">geneID FAS_B</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="btn-group">
+                    <button class="_dd_color_ btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">Loading Color</button>
+                    <ul class="_dd_color_ul_ dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','geneID')">geneID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','ncbiID')">ncbiID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','superkingdom')">superkingdom</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','fullName')">fullname</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','supertaxon')">supertaxon</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','temp')">temp</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','protID')">protID</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','subunit')">subunit</button></li>
+                        <li><button type="button" class="dropdown-item" onclick="updateColor('plott_2','geneKeywords')">geneKeywords</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="plott_2" class="_plott_ img-fluid"></div>
+        </div>
+        <div class="_progress_ hidden">
+            <div class="_progress_bar_ progress-bar" role="progressbar" aria-label="Example with label" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
+    <table id="select_output" class="table">
+        <thead class="_thead_">
+        </thead>
+        <tbody class="_tbody_">
+        </tbody>
+    </table>
+
+    <div class="row">
+        <button type="button" class="btn btn-primary" onclick="downloadOutputTable('select_output')">Download Table</button>
+    </div>
+
+
+</div>
+</body>
+</html>
