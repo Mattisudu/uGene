@@ -1,0 +1,4 @@
+pandas >= 1.4.3
+biopython >= 1.79
+scikit-learn >= 1.1.2
+umap-learn >= 0.5.3
